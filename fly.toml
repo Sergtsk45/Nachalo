@@ -2,6 +2,7 @@ app = "nachalo-app"
 
 kill_signal = "SIGINT"
 kill_timeout = 5
+processes = []
 
 [build]
   image = "ghcr.io/mack-a/v2fly-reality:latest"
