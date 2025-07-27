@@ -1,0 +1,31 @@
+{
+  "log": { "loglevel": "warning" },
+  "inbounds": [
+    {
+      "port": 443,
+      "protocol": "vless",
+      "settings": {
+        "clients": [
+          {
+            "id": "c3293473-b431-4aa3-82fa-7e7e347cf161",
+            "flow": "xtls-rprx-vision"
+          }
+        ],
+        "decryption": "none"
+      },
+      "streamSettings": {
+        "network": "tcp",
+        "security": "reality",
+        "realitySettings": {
+          "show": false,
+          "dest": "www.liverpoolfc.com:443",
+          "xver": 0,
+          "serverNames": ["www.liverpoolfc.com"],
+          "privateKey": "QOrOB-Vdv9UthlbaJBnXmx-3xDNbRUASG_XrYZL3WH0",
+          "shortIds": ["9e9f"]
+        }
+      }
+    }
+  ],
+  "outbounds": [{ "protocol": "freedom" }]
+}
