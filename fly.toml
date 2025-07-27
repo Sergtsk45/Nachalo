@@ -5,7 +5,7 @@ kill_timeout = 5
 processes = []
 
 [build]
-  image = "ghcr.io/mack-a/v2fly-reality:latest"
+  image = "ghcr.io/xtls/xray-core:latest"
 
 [env]
   XRAY_CONFIG = "/xray.json"
