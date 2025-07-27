@@ -5,7 +5,7 @@ kill_timeout = 5
 processes = []
 
 [build]
-  image = ghcr.io/mack-a/v2fly-reality:latest
+  image = "ghcr.io/mack-a/v2fly-reality:latest"
 
 [env]
   XRAY_CONFIG = "/xray.json"
@@ -13,7 +13,6 @@ processes = []
 [[services]]
   internal_port = 443
   protocol = "tcp"
-
-  [[services.ports]]
-    port = 443
-    handlers = ["tls"]
+  ports = [
+    { port = 443, handlers = ["tls"] }
+  ]
