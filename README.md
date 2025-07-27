@@ -1,2 +1,0 @@
-# Nachalo
-site Calculate
