@@ -16,3 +16,8 @@ kill_timeout = 5
   [[services.ports]]
     port = 443
     handlers = ["tls"]
+
+  [services.concurrency]
+    type = "connections"
+    hard_limit = 25
+    soft_limit = 20
