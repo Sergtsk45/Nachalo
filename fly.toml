@@ -2,13 +2,12 @@ app = "nachalo-app"
 
 kill_signal = "SIGINT"
 kill_timeout = 5
-processes = []
 
 [build]
-  image = "ghcr.io/xtls/xray-core:latest"
+  dockerfile = "Dockerfile"
 
-[env]
-  XRAY_CONFIG = "/xray.json"
+[processes]
+  app = "/bin/sh -c '/usr/local/bin/xray run -config /etc/xray/config.json'"
 
 [[services]]
   internal_port = 443
@@ -17,6 +16,19 @@ processes = []
   [[services.ports]]
     port = 443
     handlers = ["tls"]
+
+  [services.concurrency]
+    type = "connections"
+    hard_limit = 25
+    soft_limit = 20
+
+[[services]]
+  internal_port = 3128
+  protocol = "tcp"
+
+  [[services.ports]]
+    port = 3128
+    handlers = []
 
   [services.concurrency]
     type = "connections"
