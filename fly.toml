@@ -10,6 +10,7 @@ kill_timeout = 5
   app = "/bin/sh -c '/usr/local/bin/xray run -config /etc/xray/config.json'"
 
 [[services]]
+processes = ["app"]
   internal_port = 443
   protocol = "tcp"
 
@@ -23,6 +24,7 @@ kill_timeout = 5
     soft_limit = 20
 
 [[services]]
+processes = ["app"]
   internal_port = 3128
   protocol = "tcp"
 
