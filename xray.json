@@ -1,31 +1,34 @@
 {
-  "log": { "loglevel": "warning" },
+  "log": {
+    "loglevel": "debug",
+    "access": "/dev/stdout",
+    "error": "/dev/stdout"
+  },
   "inbounds": [
     {
-      "port": 443,
-      "protocol": "vless",
+      "port": 3128,
+      "listen": "0.0.0.0",
+      "protocol": "http",
       "settings": {
-        "clients": [
-          {
-            "id": "c3293473-b431-4aa3-82fa-7e7e347cf161",
-            "flow": "xtls-rprx-vision"
-          }
-        ],
-        "decryption": "none"
+        "auth": "noauth"
       },
-      "streamSettings": {
-        "network": "tcp",
-        "security": "reality",
-        "realitySettings": {
-          "show": false,
-          "dest": "www.liverpoolfc.com:443",
-          "xver": 0,
-          "serverNames": ["www.liverpoolfc.com"],
-          "privateKey": "QOrOB-Vdv9UthlbaJBnXmx-3xDNbRUASG_XrYZL3WH0",
-          "shortIds": ["9e9f"]
-        }
-      }
+      "tag": "proxy-in",
+      "sniffing": {
+        "enabled": false
+      },
+      "allocate": {
+        "strategy": "always"
+      },
+      "outboundTag": "direct"
     }
   ],
-  "outbounds": [{ "protocol": "freedom" }]
+  "outbounds": [
+    {
+      "protocol": "freedom",
+      "tag": "direct",
+      "settings": {
+        "domainStrategy": "UseIP"
+      }
+    }
+  ]
 }
