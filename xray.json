@@ -1,22 +1,19 @@
 {
-  "log": {
-    "loglevel": "debug",
-    "access": "/dev/stdout",
-    "error": "/dev/stdout"
-  },
   "inbounds": [
     {
-      "listen": "0.0.0.0",
       "port": 3128,
+      "listen": "0.0.0.0",
       "protocol": "http",
       "settings": {
-        "auth": "password",
         "accounts": [
-          { "user": "myuser", "pass": "MyStrongPass123" }
-        ]
+          { "user": "myuser", "pass": "frtg12klop" }
+        ],
+        "allowTransparent": false,
+        "userLevel": 0
       },
       "tag": "proxy-in",
       "sniffing": { "enabled": false },
+      "allocate": { "strategy": "always" },
       "outboundTag": "direct"
     }
   ],
@@ -24,7 +21,13 @@
     {
       "protocol": "freedom",
       "tag": "direct",
-      "settings": { "domainStrategy": "UseIPv4" }
+      "settings": { "domainStrategy": "UseIP" }
     }
-  ]
+  ],
+  "log": {
+    "loglevel": "debug",
+    "access": "/dev/stdout",
+    "error": "/dev/stdout"
+  }
 }
+
