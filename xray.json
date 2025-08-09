@@ -1,41 +1,28 @@
 {
-  "log": {
-    "loglevel": "info",
-    "access": "/dev/stdout",
-    "error": "/dev/stdout"
-  },
+  "log": { "loglevel": "info" },
   "inbounds": [
     {
-      "tag": "proxy-in",
-      "protocol": "http",
-      "listen": "0.0.0.0",
       "port": 3128,
+      "listen": "0.0.0.0",
+      "protocol": "http",
       "settings": {
         "auth": "password",
         "accounts": [
           { "user": "myuser", "pass": "MyStrongPass123" }
         ]
       },
-      "sniffing": { "enabled": false },
-      "allocate": { "strategy": "always" },
-      "outboundTag": "direct"
+      "tag": "proxy-in"
     }
   ],
   "outbounds": [
-    {
-      "tag": "direct",
-      "protocol": "freedom",
-      "settings": { "domainStrategy": "UseIP" }
-    },
-    {
-      "tag": "blocked",
-      "protocol": "blackhole"
-    }
+    { "protocol": "freedom", "tag": "direct" },
+    { "protocol": "blackhole", "tag": "drop" }
   ],
   "routing": {
     "domainStrategy": "AsIs",
     "rules": [
-      { "type": "field", "ip": ["geoip:private"], "outboundTag": "blocked" }
+      { "type": "field", "port": "80,443", "outboundTag": "direct" },
+      { "type": "field", "outboundTag": "drop" }
     ]
   }
 }
