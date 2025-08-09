@@ -9,15 +9,13 @@ kill_timeout = 5
 [processes]
   app = "/usr/local/bin/xray run -config /etc/xray/config.json"
 
-# ПРОКСИ: внешний 24123 -> внутренний 3128
 [[services]]
   processes = ["app"]
   internal_port = 3128
   protocol = "tcp"
 
   [[services.ports]]
-    processes = ["app"]
-    port = 24123
+    port = 3128
     handlers = []
 
   [services.concurrency]
