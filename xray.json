@@ -6,19 +6,17 @@
   },
   "inbounds": [
     {
-      "port": 3128,
       "listen": "0.0.0.0",
+      "port": 3128,
       "protocol": "http",
       "settings": {
-        "auth": "noauth"
+        "auth": "password",
+        "accounts": [
+          { "user": "myuser", "pass": "MyStrongPass123" }
+        ]
       },
       "tag": "proxy-in",
-      "sniffing": {
-        "enabled": false
-      },
-      "allocate": {
-        "strategy": "always"
-      },
+      "sniffing": { "enabled": false },
       "outboundTag": "direct"
     }
   ],
@@ -26,9 +24,7 @@
     {
       "protocol": "freedom",
       "tag": "direct",
-      "settings": {
-        "domainStrategy": "UseIPv4"
-      }
+      "settings": { "domainStrategy": "UseIPv4" }
     }
   ]
 }
