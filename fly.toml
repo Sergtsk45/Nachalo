@@ -1,4 +1,4 @@
-app = "nachalo-app"
+app = "nachalo"
 
 kill_signal = "SIGINT"
 kill_timeout = 5
@@ -9,26 +9,14 @@ kill_timeout = 5
 [processes]
   app = "/usr/local/bin/xray run -config /etc/xray/config.json"
 
+# ПРОКСИ: внешний 24123 -> внутренний 3128
 [[services]]
-processes = ["app"]
-  internal_port = 443
-  protocol = "tcp"
-
-  [[services.ports]]
-    port = 443
-    handlers = ["tls"]
-
-  [services.concurrency]
-    type = "connections"
-    hard_limit = 100
-    soft_limit = 80
-
-[[services]]
-processes = ["app"]
+  processes = ["app"]
   internal_port = 3128
   protocol = "tcp"
 
   [[services.ports]]
+    processes = ["app"]
     port = 24123
     handlers = []
 
