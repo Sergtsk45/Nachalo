@@ -29,10 +29,10 @@ processes = ["app"]
   protocol = "tcp"
 
   [[services.ports]]
-    port = 3128
+    port = 24123
     handlers = []
 
   [services.concurrency]
     type = "connections"
-    hard_limit = 25
-    soft_limit = 20
+    hard_limit = 200
+    soft_limit = 150
