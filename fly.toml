@@ -20,8 +20,8 @@ processes = ["app"]
 
   [services.concurrency]
     type = "connections"
-    hard_limit = 200
-    soft_limit = 150
+    hard_limit = 100
+    soft_limit = 80
 
 [[services]]
 processes = ["app"]
