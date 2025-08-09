@@ -5,20 +5,20 @@
     "error": "/dev/stdout"
   },
   "inbounds": [
-    {
-      "listen": "0.0.0.0",
-      "port": 3128,
-      "protocol": "http",
-      "settings": {
-        "auth": "password",
-        "accounts": [
-          { "user": "myuser", "pass": "mnb45ghj" }
-        ]
-      },
-      "tag": "proxy-in",
-      "sniffing": { "enabled": false },
-      "outboundTag": "direct"
-    }
+  {
+    "listen": "::",
+    "port": 3128,
+    "protocol": "http",
+    "settings": {
+      "auth": "password",
+      "accounts": [
+        { "user": "myuser", "pass": "mnb45ghj" }
+      ]
+    },
+    "tag": "proxy-in",
+    "sniffing": { "enabled": false }
+  }
+]
   ],
   "outbounds": [
     {
